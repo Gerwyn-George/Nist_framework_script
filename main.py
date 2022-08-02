@@ -316,6 +316,7 @@ def show_selected_objectives():
             ob_rearchitect = "x" 
 
     # Printing the objectives with an x if it has been selected to show the user their inputs.
+
     print("")
     print("You have selected the following NIST SP 800-160 Objectives.")
     print (("Prevent/Avoid [{}] - Prepare [{}] - Continue [{}] - Constrain [{}] - Reconstitute [{}] - Understand [{}] - Transform [{}] - Re-architect [{}]").format(ob_prevent,ob_prepare,ob_continue,ob_constrain,ob_reconsitute,ob_understand,ob_transform,ob_rearchitect))
