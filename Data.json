@@ -11,7 +11,8 @@
           "Understand": true,
           "Transform": false,
           "Re-architect": false
-        }
+        },
+        "description": "Maintain a state of informed preparedness for adversity."
       },
       {
         "name": "Withstand",
@@ -24,7 +25,8 @@
           "Understand": true,
           "Transform": false,
           "Re-architect": false
-        }
+        },
+        "description": "Continue essential mission or business functions despite adversity."
       },
       {
         "name": "Recover",
@@ -37,7 +39,8 @@
           "Understand": true,
           "Transform": true,
           "Re-architect": true
-        }
+        },
+        "description": "Restore mission or business functions during and after adversity."
       },
       {
         "name": "Adapt",
@@ -50,7 +53,8 @@
           "Understand": true,
           "Transform": true,
           "Re-architect": true
-        }
+        },
+        "description": "Modify mission or business functions and/or supporting capabilities in response to predicted changes in the technical, operational, or threat environments."
       }
     ],
     "NIST 800-160 Stategic design principles": [

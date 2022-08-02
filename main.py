@@ -32,9 +32,10 @@ list_approaches = []
 # The names of the classes are self explanitory.  
 
 class Nist_800_160_Goal:
-    def __init__(self,name = "name",  objectives = {} ):
+    def __init__(self,name = "name",  objectives = {}, description ="" ):
         self.name = name
         self.objectives = objectives 
+        self.description = description
 
 class Nist_800_160_Objective:
     def __init__(self, name = "", description = "", discussion =""):
@@ -91,13 +92,19 @@ def get_goals_data():
     for goal in goals:
         
         name = goal["name"]
+
         list_goals.append( Nist_800_160_Goal(name)) # Add the name collected to the name attribute. 
-        
+
+        for y in list_goals:
+            if len(y.description) == 0:
+                y.description = goal["description"] # If the description is empty, assign the value of descriptions.  
+                
         for y in list_goals:
             if len(y.objectives) == 0:
                 y.objectives = goal["objectives"] # If the objective is empty, assign the value of objectives. 
             else:
                 pass 
+
 
 def get_objectives_data():
 
@@ -372,28 +379,30 @@ def show(construct):
         print("Objectives:")
         print("")
         for i in list_objectives: # Loops through the list of objectives from the json file.
-            print(i.name)
+            print(".",i.name)
+            print("description:",i.description)
         print("")
     
     if construct == "goals":
         print("Goals:")
         print("")
         for i in list_goals: # Loops through the list of goals from the json file.
-            print(i.name)
+            print(".",i.name)
+            print("description:",i.description)
         print("")
 
     if construct == "strategic design principles":
         print("Stategic design principles:")
         print("")
         for i in list_strat_principles: # Loops through the list of strat principles from the json file.
-            print(i.name)
+            print(".",i.name)
         print("")
 
     if construct == "structural design principles":
         print("Structural design principles")
         print("")
         for i in list_struct_principles: # Loops through the list of struct principles  from the json file.
-            print(i.name)
+            print(".",i.name)
         print("")
 
 
