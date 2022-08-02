@@ -447,20 +447,22 @@ if __name__ == "__main__":
 
         # User choosing their option in the menue.
 
-        choose = int(input("please input your option: "))
+        choose = input("please input your option: ")
 
-        if choose == 1:        
+        if choose == "1":        
             set_objectives()
             show_selected_objectives()
             compare()
-        if choose == 2:
+        if choose == "2":
             show("objectives")
-        if choose == 3:
+        if choose == "3":
             show("goals")
-        if choose == 4:
+        if choose == "4":
             show("strategic design principles")
-        if choose == 5:
+        if choose == "5":
             show("structural design principles")
+        else:
+            print(choose,"was not a vailid input")
         
         # Allows you to break from the loop.
 
