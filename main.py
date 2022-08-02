@@ -44,14 +44,16 @@ class Nist_800_160_Objective:
         self.discussion = discussion
 
 class Nist_800_160_Stategic_design_principle:
-    def __init__(self, name = "", risk_response_priorities = {}):
+    def __init__(self, name = "", risk_response_priorities = {}, key_ideas =""):
         self.name = name 
         self.risk_response_priorities = risk_response_priorities
+        self.key_ideas = key_ideas
 
 class Nist_800_160_Structural_design_principle: 
-    def __init__(self, name = "", strategic_design_principles = {}):
+    def __init__(self, name = "", strategic_design_principles = {}, key_ideas = ""):
         self.name = name 
         self.strategic_design_principles = strategic_design_principles
+        self.key_ideas = key_ideas
 
 class NIST_800_160_Technique: 
     def __init__(self, name = "", definition = "", purpose = "", objectives = {}, approaches = {} ):
@@ -99,7 +101,6 @@ def get_goals_data():
             if len(y.description) == 0:
                 y.description = goal["description"] # If the description is empty, assign the value of descriptions.  
                 
-        for y in list_goals:
             if len(y.objectives) == 0:
                 y.objectives = goal["objectives"] # If the objective is empty, assign the value of objectives. 
             else:
@@ -140,7 +141,11 @@ def get_stat_design_principles():
         for y in list_strat_principles:
             if len(y.risk_response_priorities) == 0:
                 y.risk_response_priorities = principle["Risk response priorities"] # If the risk response priorite is empty, assign the value of risk responce priorities.
+
+            if len(y.key_ideas) == 0:
+                y.key_ideas = principle["key_ideas"] # If the key_idease is empty, assugn the value of the key_ideas.
         
+                
 def get_struct_design_principles():
 
     # This identifies where in the json file to collect data from.
@@ -157,6 +162,9 @@ def get_struct_design_principles():
         for y in list_struct_principles:
             if len(y.strategic_design_principles) == 0:
                 y.strategic_design_principles = principle["strategic design principles"] # If the desing principle is empty, assugn the value of the design principles.
+
+            if len(y.key_ideas) == 0:
+                y.key_ideas = principle["key_ideas"] # If the key_idease is empty, assugn the value of the key_ideas.
 
 
 def compare():
@@ -373,13 +381,13 @@ def set_objectives():
 
 def show(construct): 
 
-    print("")
-
     if construct == "objectives":
         print("Objectives:")
         print("")
         for i in list_objectives: # Loops through the list of objectives from the json file.
+            print("")
             print(".",i.name)
+            print("")
             print("description:",i.description)
         print("")
     
@@ -387,7 +395,9 @@ def show(construct):
         print("Goals:")
         print("")
         for i in list_goals: # Loops through the list of goals from the json file.
+            print("")
             print(".",i.name)
+            print("")
             print("description:",i.description)
         print("")
 
@@ -395,14 +405,20 @@ def show(construct):
         print("Stategic design principles:")
         print("")
         for i in list_strat_principles: # Loops through the list of strat principles from the json file.
+            print("")
             print(".",i.name)
+            print("")
+            print("key ideas:",i.key_ideas)
         print("")
 
     if construct == "structural design principles":
         print("Structural design principles")
         print("")
         for i in list_struct_principles: # Loops through the list of struct principles  from the json file.
+            print("")
             print(".",i.name)
+            print("")
+            print("key ideas:",i.key_ideas)
         print("")
 
 
@@ -450,8 +466,6 @@ if __name__ == "__main__":
         repeat = input("Do you want to select another option? y for yes, n for no: ")
         if repeat != "y":
             break
-
-
 
 
 

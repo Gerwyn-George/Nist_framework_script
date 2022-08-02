@@ -64,34 +64,39 @@
           "Anticipate",
           "Withstand",
           "Recover"
-        ]
+        ],
+        "key_ideas": "Motivation: Limited organizational and programmatic resources need to be applied where they can provide the greatest benefit. This results in a strategy of focusing first on assets that are both critical and common followed by those that are either critical or common. Guidance: Know which mission or business functions, tasks, capabilities, and assets are critical. Know which resources, assets, or services are essential to the successful performance of critical functions and tasks or to the protection of critical assets. Focus first on ensuring the security and cyber resiliency of those essential resources that are common across multiple functions as high-value adversary targets."
       },
       {
         "name": "Support agility and architect for adapability",
         "Risk response priorities": [
           "Recover",
           "Adapt"
-        ]
+        ],
+        "key_ideas":  "Motivation: Not only does the threat landscape change as adversaries evolve, so do technologies and the ways in which individuals and organizations use them. Both agility and adaptability are integral to the risk management strategy in response to the risk framing assumption that unforeseen changes will occur in the threat, technical, and operational environment through a system’s lifespan. Guidance: Prepare for changes in the technical, operational, and threat environments. Leverage existing and emerging standards to support interoperability. Recognizing that the organization could invest in capabilities or create programs for varying purposes and with different time frames, manage risks due to dependencies or other interactions among programs or initiatives."
       },
       {
         "name": "Reduce attack surfaces",
         "Risk response priorities": [
           "Anticipate"
-        ]
+        ],
+        "key_ideas":  "Motivation: A large attack surface is difficult to defend and requires ongoing effort to monitor, analyze, and respond to anomalies. Reducing attack surfaces reduces ongoing protection scope costs and makes the adversary concentrate efforts on a small set of locations, resources, or environments that can be more effectively monitored and defended. Guidance: Understand the organization’s attack surfaces—not only the exposed elements of systems but also people and processes. Consider how an adversary could attack development, operational, and maintenance environments. Consider attack surfaces in the cyber supply chain. Consider social media exposure and insider threats."
       },
       {
         "name": "Assume compromised resources",
         "Risk response priorities": [
           "Anticipate",
           "Withstand"
-        ]
+        ],
+        "key_ideas":  "Motivation: Systems and system components, ranging from chips to software modules to running services, can be compromised for extended periods without detection. In fact, some compromises may never be detected. Nonetheless, systems must remain capable of meeting performance and quality requirements. Guidance: Structure systems and mission or business processes to minimize the harm that could result from a specific product or type of technology being compromised. Consider the potential for lateral movement by an adversary as well as for cascading failures. Analyze and prepare to manage the potential consequences of learning that a key component, service, or technology has been compromised or found vulnerable"
       },
       {
         "name": "Expect adversaries to evolve",
         "Risk response priorities": [
           "Anticipate",
           "Adapt"
-        ]
+        ],
+        "key_ideas":  "Motivation: Advanced cyber adversaries invest time, effort, and intelligence gathering to improve existing TTPs and develop new TTPs. Adversaries evolve in response to opportunities offered by new technologies or uses of technology, as well as to the knowledge they gain about defender TTPs. In time, the tools developed by advanced adversaries become available to less sophisticated adversaries. Therefore, systems and missions need to be resilient in the face of unexpected attacks. Guidance: Incorporate an adversarial perspective when analyzing architectural changes, design modifications, and changes in operational procedures and governance structures. Use cyber threat intelligence (CTI) but do not be limited by it—take a longer-term view, and expect the threat landscape to continue to change."
       }
     ],
     "NIST 800-160 Structural Design Principles": [
@@ -103,7 +108,9 @@
           "reduce attack surfaces": true,
           "assume compomised resources": true,
           "expect adversaries to evolve": false
-        }
+        },
+        "key_ideas": "Limiting the number of system elements that need to be trusted (or the length of time for which an element needs to be trusted) reduces the level of effort needed for assurance, ongoing protection, and monitoring."
+
       },
       {
         "name": "control visibility",
@@ -113,7 +120,8 @@
           "reduce attack surfaces": true,
           "assume compomised resources": true,
           "expect adversaries to evolve": false
-        }
+        },
+        "key_ideas": "Controlling what can be discovered, observed, and used increases the effort needed by an adversary seeking to expand its foothold in or increase its impacts on systems containing cyber resources."
       },
       {
         "name": "contain and exclude behaviours",
@@ -123,7 +131,8 @@
           "reduce attack surfaces": false,
           "assume compomised resources": true,
           "expect adversaries to evolve": true
-        }
+        },
+        "key_ideas": "Limiting what can be done and where actions can be taken reduces the possibility or extent of the spread of compromises or disruptions across components or services."
       },
       {
         "name": "layer defences and parition resources",
@@ -133,7 +142,8 @@
           "reduce attack surfaces": false,
           "assume compomised resources": true,
           "expect adversaries to evolve": false
-        }
+        },
+        "key_ideas": "The combination of defense-in-depth and partitioning increases the effort required by an adversary to overcome multiple defenses."
       },
       {
         "name": "plan and manage diversity",
@@ -143,7 +153,8 @@
           "reduce attack surfaces": false,
           "assume compomised resources": true,
           "expect adversaries to evolve": false
-        }
+        },
+        "key_ideas": "Diversity is a well-established resilience technique that removes single points ofattack or failure. However, architectures and designs should take cost and manageability into consideration to avoid introducing new risks."
       },
       {
         "name": "maintain redundancy",
@@ -153,7 +164,8 @@
           "reduce attack surfaces": false,
           "assume compomised resources": true,
           "expect adversaries to evolve": false
-        }
+        },
+        "key_ideas": "Redundancy is key to many resilience, strategies but can degrade over time as configurations are updated or connectivity changes"
       },
       {
         "name": "make resources location-versatile",
@@ -163,7 +175,8 @@
           "reduce attack surfaces": false,
           "assume compomised resources": false,
           "expect adversaries to evolve": true
-        }
+        },
+        "key_ideas": "A resource bound to a single location (e.g., a service running only on a single hardware component, a database located in a single datacenter) can become a single point of failure and, thus, a highvalue target."
       },
       {
         "name": "leverage health and status data",
@@ -173,7 +186,8 @@
           "reduce attack surfaces": false,
           "assume compomised resources": true,
           "expect adversaries to evolve": true
-        }
+        },
+        "key_ideas": "Health and status data can be useful in supporting situational awareness, indicating potentially suspicious behaviors, and predicting the need for adaptation to changing operational demands."
       },
       {
         "name": "maintain situation awareness",
@@ -183,7 +197,8 @@
           "reduce attack surfaces": false,
           "assume compomised resources": false,
           "expect adversaries to evolve": true
-        }
+        },
+        "key_ideas": "Situational awareness, including the awareness of possible performance trends and the emergence of anomalies, informs decisions about cyber courses of action to ensure mission completion."
       },
       {
         "name": "manage resources(risk-) adaptively",
@@ -193,7 +208,8 @@
           "reduce attack surfaces": false,
           "assume compomised resources": false,
           "expect adversaries to evolve": true
-        }
+        },
+        "key_ideas": "Risk-adaptive management supports agility and provides supplemental risk mitigation throughout critical operations despite disruptions or outages of components."
       },
       {
         "name": "maximize transience",
@@ -203,7 +219,8 @@
           "reduce attack surfaces": true,
           "assume compomised resources": true,
           "expect adversaries to evolve": true
-        }
+        },
+        "key_ideas": "Use of transient system elements minimizes the duration of exposure to adversary activities, while periodically refreshing to a known (secure) state can expunge malware or corrupted data."
       },
       {
         "name": "determine ongoing trustworthiness",
@@ -213,7 +230,8 @@
           "reduce attack surfaces": false,
           "assume compomised resources": true,
           "expect adversaries to evolve": true
-        }
+        },
+        "key_ideas": "Periodic or ongoing verification and/or validation of the integrity or correctness of data or software can increase the effort needed by an adversary seeking to modify or fabricate data or functionality. Similarly, periodic or ongoing analysis of the behavior of individual users, system components, and services can increase suspicion and trigger responses such as closer monitoring, more restrictive privileges, or quarantine."
       },
       {
         "name": "change or distrupt the attack surface",
@@ -223,7 +241,8 @@
           "reduce attack surfaces": true,
           "assume compomised resources": true,
           "expect adversaries to evolve": true
-        }
+        },
+        "key_ideas": "Disruption of the attack surface can cause the adversary to waste resources, make incorrect assumptions about the system or the defender, or prematurely launch attacks or disclose information."
       },
       {
         "name": "make the effects of deception and unpredictability user-transparent",
@@ -233,7 +252,8 @@
           "reduce attack surfaces": true,
           "assume compomised resources": false,
           "expect adversaries to evolve": false
-        }
+        },
+        "key_ideas": "Deception and unpredictability can be highly effective techniques against an adversary, leading the adversary to reveal its presence or TTPs or to waste effort. However, when improperly applied, these techniques can also confuse users."
       }
     ],
     "NIST 800-160 Objectives": [
