@@ -233,29 +233,29 @@ def compare():
     # Desplaying the results from the algrathium. 
 
     for key in range(0,4): # The number of goals is 4.
-        print("")
+        if goal_ctr[key][1] != 0: # If there is 0 objectives for a goal doesn't print that goal.
+            print("")
 
-        # goal_ctr[key][0] is the goal name and goal_ctr[key][1] is the number of objectives 
-        print(key)
-        print(("The {} GOAL Meets: {} NIST 800-160 OBJECTIVES.").format(goal_ctr[key][0],goal_ctr[key][1])) 
-        print("These are:")
-        print("")
+            # goal_ctr[key][0] is the goal name and goal_ctr[key][1] is the number of objectives 
+            print(("The {} GOAL Meets: {} NIST 800-160 OBJECTIVES.").format(goal_ctr[key][0],goal_ctr[key][1])) 
+            print("These are:")
+            print("")
 
-        if goal_ctr[key][0] == "Anticipate":
-            for i in anticipate_list:
-                print(("         * {}").format(i)) # Prints all the objectives met for anticipate.
+            if goal_ctr[key][0] == "Anticipate":
+                for i in anticipate_list:
+                    print(("         * {}").format(i)) # Prints all the objectives met for anticipate.
     
-        if goal_ctr[key][0] == "Adapt":
-            for i in adapt_list:
-                print(("         * {}").format(i)) # Prints all the objectives met for adapt.
+            if goal_ctr[key][0] == "Adapt":
+                for i in adapt_list:
+                    print(("         * {}").format(i)) # Prints all the objectives met for adapt.
     
-        if goal_ctr[key][0] == "Recover":
-            for i in recover_list:
-                print(("         * {}").format(i)) # Prints all the objectives met for recover.
+            if goal_ctr[key][0] == "Recover":
+                for i in recover_list:
+                    print(("         * {}").format(i)) # Prints all the objectives met for recover.
     
-        if goal_ctr[key][0] == "Withstand":
-            for i in withstand_list:
-                print(("         * {}").format(i)) # Prints all the objectives met for withstand.
+            if goal_ctr[key][0] == "Withstand":
+                for i in withstand_list:
+                    print(("         * {}").format(i)) # Prints all the objectives met for withstand.
 
 
 
@@ -309,8 +309,6 @@ def show_selected_objectives():
 
 def set_objectives():
 
-    print("")
-    print("---------- Console application ----------")
     print("")
     print("Choose NIST 800-160 objectives:")
     print("")
@@ -366,51 +364,84 @@ def set_objectives():
         objectives_list.update({"Re-architect":False})
 
 
-def show(construct): # work in progress
+def show(construct): 
+
+    print("")
 
     if construct == "objectives":
         print("Objectives:")
         print("")
-        for i in list_objectives:
+        for i in list_objectives: # Loops through the list of objectives from the json file.
             print(i.name)
         print("")
     
     if construct == "goals":
         print("Goals:")
         print("")
-        for i in list_goals:
+        for i in list_goals: # Loops through the list of goals from the json file.
             print(i.name)
         print("")
 
     if construct == "strategic design principles":
         print("Stategic design principles:")
         print("")
-        for i in list_strat_principles:
+        for i in list_strat_principles: # Loops through the list of strat principles from the json file.
             print(i.name)
         print("")
 
     if construct == "structural design principles":
         print("Structural design principles")
         print("")
-        for i in list_struct_principles:
+        for i in list_struct_principles: # Loops through the list of struct principles  from the json file.
             print(i.name)
         print("")
 
 
 if __name__ == "__main__":
+
+    # Set up functions.
+
     get_stat_design_principles()
-
     get_struct_design_principles()
-
     get_goals_data()
-
     get_objectives_data()
+
+    # Menue
+
+    while True:
+
+        print("")
+        print("---------- Console application ----------")
+        print("")
+        print("Options:")
+        print("1, choose NIST 800-160 objectives")
+        print("2, see objectives")
+        print("3, see goals")
+        print("4, see strategic design principles")
+        print("5, see structural design principles")
+        print("")
+
+        choose = int(input("please input your option: "))
+
+        if choose == 1:        
+            set_objectives()
+            show_selected_objectives()
+            compare()
+        if choose == 2:
+            show("objectives")
+        if choose == 3:
+            show("goals")
+        if choose == 4:
+            show("strategic design principles")
+        if choose == 5:
+            show("structural design principles")
         
-    set_objectives()
+        # Allows you to break from the loop.
 
-    show_selected_objectives()
+        repeat = input("Do you want to select another option? y for yes, n for no: ")
+        if repeat != "y":
+            break
 
-    compare()
 
 
 
