@@ -25,26 +25,24 @@ list_struct_principles = []
 list_techniques = []
 list_approaches = []
 
-
-
 # The class objects are defined here for each construct. defaults have been put in for each attribute of the class. 
 # i.e dicts and strings. Dicts are used to store mapping, while the strings are used to put in text. 
 # The names of the classes are self explanitory.  
 
 class Nist_800_160_Goal:
-    def __init__(self,name = "name",  objectives = {}, description ="" ):
+    def __init__(self,name = "name",  objectives = {}, description = "" ):
         self.name = name
         self.objectives = objectives 
         self.description = description
 
 class Nist_800_160_Objective:
-    def __init__(self, name = "", description = "", discussion =""):
+    def __init__(self, name = "", description = "", discussion = ""):
         self.name = name
         self.description = description
         self.discussion = discussion
 
 class Nist_800_160_Stategic_design_principle:
-    def __init__(self, name = "", risk_response_priorities = {}, key_ideas =""):
+    def __init__(self, name = "", risk_response_priorities = {}, key_ideas = ""):
         self.name = name 
         self.risk_response_priorities = risk_response_priorities
         self.key_ideas = key_ideas
@@ -64,7 +62,7 @@ class NIST_800_160_Technique:
         self.approaches = approaches  
 
 class NIST_800_160_Approach:
-    def __init__(self, name = "" , definition = "", purpose = "", objectives = {}, approaches = {}):
+    def __init__(self, name = "", definition = "", purpose = "", objectives = {}, approaches = {}):
         self.name = name
         self.defintion = definition
         self.purpose = purpose
@@ -75,8 +73,7 @@ class NIST_800_160_Approach:
 # This objectives list, is used later in the script so that users of the script can define their chosen objectives. 
 # by default, they are set fo 'false'.  
 
-objectives_list = {"Prevent/Avoid":False, "Prepare":False, "Continue":False, "Constrain":False, "Reconstitute":False, "Understand":False, "Transform":False, "Re-architect":False
-}
+objectives_list = {"Prevent/Avoid":False, "Prepare":False, "Continue":False, "Constrain":False, "Reconstitute":False, "Understand":False, "Transform":False, "Re-architect":False}
 
 
 # The functions below that are prefixed with 'get' are focused on the collection of data located in the Data.json file. 
@@ -94,7 +91,6 @@ def get_goals_data():
     for goal in goals:
         
         name = goal["name"]
-
         list_goals.append( Nist_800_160_Goal(name)) # Add the name collected to the name attribute. 
 
         for y in list_goals:
@@ -103,8 +99,6 @@ def get_goals_data():
                 
             if len(y.objectives) == 0:
                 y.objectives = goal["objectives"] # If the objective is empty, assign the value of objectives. 
-            else:
-                pass 
 
 
 def get_objectives_data():
@@ -123,6 +117,7 @@ def get_objectives_data():
         for y in list_objectives:
             if len(y.description) == 0:
                 y.description = obj["Description"] # If the description is empty, assign the value of descriptions.
+
             if len(y.discussion) == 0:
                 y.discussion = obj["Discussion"] # If the discussion is empty, assign the value of discussion. 
 
@@ -135,6 +130,7 @@ def get_stat_design_principles():
     # For each goal outlined in data.json do the following. 
 
     for principle in stat_design:
+
         name = principle["name"]
         list_strat_principles.append (Nist_800_160_Stategic_design_principle(name)) # Add the name collected to the name attribute.
 
@@ -248,29 +244,29 @@ def compare():
     # Desplaying the results from the algrathium. 
 
     for key in range(0,4): # The number of goals is 4.
-        if goal_ctr[key][1] != 0: # If there is 0 objectives for a goal doesn't print that goal.
-            print("")
+            
+        print("")
 
-            # goal_ctr[key][0] is the goal name and goal_ctr[key][1] is the number of objectives 
-            print(("The {} GOAL Meets: {} NIST 800-160 OBJECTIVES.").format(goal_ctr[key][0],goal_ctr[key][1])) 
-            print("These are:")
-            print("")
+        # goal_ctr[key][0] is the goal name and goal_ctr[key][1] is the number of objectives 
+        print(("The {} GOAL Meets: {} NIST 800-160 OBJECTIVES.").format(goal_ctr[key][0],goal_ctr[key][1])) 
+        print("These are:")
+        print("")
 
-            if goal_ctr[key][0] == "Anticipate":
-                for i in anticipate_list:
-                    print(("         * {}").format(i)) # Prints all the objectives met for anticipate.
+        if goal_ctr[key][0] == "Anticipate":
+            for i in anticipate_list:
+                print(("         * {}").format(i)) # Prints all the objectives met for anticipate.
     
-            if goal_ctr[key][0] == "Adapt":
-                for i in adapt_list:
-                    print(("         * {}").format(i)) # Prints all the objectives met for adapt.
+        if goal_ctr[key][0] == "Adapt":
+            for i in adapt_list:
+                print(("         * {}").format(i)) # Prints all the objectives met for adapt.
     
-            if goal_ctr[key][0] == "Recover":
-                for i in recover_list:
-                    print(("         * {}").format(i)) # Prints all the objectives met for recover.
+        if goal_ctr[key][0] == "Recover":
+            for i in recover_list:
+                print(("         * {}").format(i)) # Prints all the objectives met for recover.
     
-            if goal_ctr[key][0] == "Withstand":
-                for i in withstand_list:
-                    print(("         * {}").format(i)) # Prints all the objectives met for withstand.
+        if goal_ctr[key][0] == "Withstand":
+            for i in withstand_list:
+                print(("         * {}").format(i)) # Prints all the objectives met for withstand.
 
 
 
@@ -387,7 +383,7 @@ def show(construct):
         print("")
         for i in list_objectives: # Loops through the list of objectives from the json file.
             print("")
-            print(".",i.name)
+            print("*",i.name)
             print("")
             print("description:",i.description)
         print("")
@@ -397,7 +393,7 @@ def show(construct):
         print("")
         for i in list_goals: # Loops through the list of goals from the json file.
             print("")
-            print(".",i.name)
+            print("*",i.name)
             print("")
             print("description:",i.description)
         print("")
@@ -407,7 +403,7 @@ def show(construct):
         print("")
         for i in list_strat_principles: # Loops through the list of strat principles from the json file.
             print("")
-            print(".",i.name)
+            print("*",i.name)
             print("")
             print("key ideas:",i.key_ideas)
         print("")
@@ -417,7 +413,7 @@ def show(construct):
         print("")
         for i in list_struct_principles: # Loops through the list of struct principles  from the json file.
             print("")
-            print(".",i.name)
+            print("*",i.name)
             print("")
             print("key ideas:",i.key_ideas)
         print("")
@@ -439,6 +435,8 @@ if __name__ == "__main__":
         print("")
         print("---------- Console application ----------")
         print("")
+        print("NIST 800-160 v2")
+        print("")
         print("Options:")
         print("1, choose NIST 800-160 objectives")
         print("2, see objectives")
@@ -446,6 +444,8 @@ if __name__ == "__main__":
         print("4, see strategic design principles")
         print("5, see structural design principles")
         print("")
+
+        # User choosing their option in the menue.
 
         choose = int(input("please input your option: "))
 
@@ -467,6 +467,3 @@ if __name__ == "__main__":
         repeat = input("Do you want to select another option? y for yes, n for no: ")
         if repeat != "y":
             break
-
-
-
