@@ -75,9 +75,6 @@ class NIST_800_160_Approach:
 objectives_list = {"Prevent/Avoid":False, "Prepare":False, "Continue":False, "Constrain":False, "Reconstitute":False, "Understand":False, "Transform":False, "Re-architect":False
 }
 
-#for i in objectives_list:
-    #print(objectives_list[i])
-
 
 # The functions below that are prefixed with 'get' are focused on the collection of data located in the Data.json file. 
 # All of these functions are based around the same function. The description of how the function works is outlined in the first 
@@ -103,43 +100,61 @@ def get_goals_data():
                 pass 
 
 def get_objectives_data():
+
+    # This identifies where in the json file to collect data from. 
+
     objectives = data["NIST 800-160 Objectives"]
 
+    # For each goal outlined in data.json do the following. 
+
     for obj in objectives:
+
         name = obj["name"]
-        list_objectives.append (Nist_800_160_Objective(name))
+        list_objectives.append (Nist_800_160_Objective(name)) # Add the name collected to the name attribute. 
 
         for y in list_objectives:
             if len(y.description) == 0:
-                y.description = obj["Description"]
+                y.description = obj["Description"] # If the description is empty, assign the value of descriptions.
             if len(y.discussion) == 0:
-                y.discussion = obj["Discussion"]
+                y.discussion = obj["Discussion"] # If the discussion is empty, assign the value of discussion. 
 
 def get_stat_design_principles():
+
+    # This identifies where in the json file to collect data from. 
+
     stat_design = data["NIST 800-160 Stategic design principles"]
+
+    # For each goal outlined in data.json do the following. 
 
     for principle in stat_design:
         name = principle["name"]
-        list_strat_principles.append (Nist_800_160_Stategic_design_principle(name))
+        list_strat_principles.append (Nist_800_160_Stategic_design_principle(name)) # Add the name collected to the name attribute.
 
         for y in list_strat_principles:
             if len(y.risk_response_priorities) == 0:
-                y.risk_response_priorities = principle["Risk response priorities"]        
+                y.risk_response_priorities = principle["Risk response priorities"] # If the risk response priorite is empty, assign the value of risk responce priorities.
         
 def get_struct_design_principles():
+
+    # This identifies where in the json file to collect data from.
+
     struct_design = data["NIST 800-160 Structural Design Principles"]
+
+    # For each goal outlined in data.json do the following. 
+
     for principle in struct_design:
 
         name = principle["name"]
-        list_struct_principles.append(Nist_800_160_Structural_design_principle(name))
+        list_struct_principles.append(Nist_800_160_Structural_design_principle(name)) # Add the name collected to the name attribute.
 
         for y in list_struct_principles:
             if len(y.strategic_design_principles) == 0:
-                y.strategic_design_principles = principle["strategic design principles"] 
+                y.strategic_design_principles = principle["strategic design principles"] # If the desing principle is empty, assugn the value of the design principles.
 
 
 def compare():
 
+    # Set all goals to False as defult
     Anticipate = {"Prevent/Avoid":False, "Prepare":False, "Continue":False, "Constrain":False, "Reconstitute":False, "Understand":False, "Transform":False, "Re-architect":False}
     Withstand = {"Prevent/Avoid":False, "Prepare":False, "Continue":False, "Constrain":False, "Reconstitute":False, "Understand":False, "Transform":False, "Re-architect":False}
     Recover = {"Prevent/Avoid":False, "Prepare":False, "Continue":False, "Constrain":False, "Reconstitute":False, "Understand":False, "Transform":False, "Re-architect":False}
@@ -150,18 +165,34 @@ def compare():
         for y in x.objectives: 
 
             if x.objectives.get(y) == True and objectives_list.get(y) == True and x.name == "Adapt":
+
+                # For the goal adapt, compares the data from the json from the objective list inputted.
+                # If both objectives are True set adapt for that objective to be True.
+
                 Adapt[y] = True
                
 
             if x.objectives.get(y) == True and objectives_list.get(y) == True and x.name == "Recover":
+
+                # For the goal recover, compares the data from the json from the objective list inputted.
+                # If both objectives are True set recover for that objective to be True.
+
                 Recover[y] = True
              
 
             if x.objectives.get(y) == True and objectives_list.get(y) == True and x.name == "Withstand":
+
+                # For the goal withstand, compares the data from the json from the objective list inputted.
+                # If both objectives are True set withstand for that objective to be True.
+
                 Withstand[y] = True
             
 
             if x.objectives.get(y) == True and objectives_list.get(y) == True and x.name == "Anticipate":
+
+                # For the goal anticipate, compares the data from the json from the objective list inputted.
+                # If both objectives are True set anticipate for that objective to be True.
+
                 Anticipate[y] = True
           
     
@@ -177,121 +208,62 @@ def compare():
     for key,value in Anticipate.items():
         if value == True: 
            
-            anticipate_list.append(key) 
+            anticipate_list.append(key) # Makes a copy of the anticipate dictionary as a list.
 
     for key,value in Adapt.items():
         if value == True: 
        
-            adapt_list.append(key)  
+            adapt_list.append(key) # Makes a copy of the adapt dictionary as a list.
 
     for key,value in Recover.items():
         if value == True: 
          
-            recover_list.append(key)  
+            recover_list.append(key) # Makes a copy of the recover dictionary as a list.
 
     for key,value in Withstand.items():
         if value == True: 
     
-            withstand_list.append(key) 
+            withstand_list.append(key) # Makes a copy of the withstand dictionary as a list.
 
-    goal_ctr = {"Anticipate":len(anticipate_list), "Adapt":len(adapt_list), "Recover":len(recover_list), "Withstand":len(withstand_list)}
+    goal_ctr = {"Anticipate":len(anticipate_list), "Adapt":len(adapt_list), "Recover":len(recover_list), "Withstand":len(withstand_list)} # Makes a dictionary of the lengths of each goal list
 
-    goal_ctr = (sorted(goal_ctr.items(),key=lambda x:x[1], reverse=True)) 
+    goal_ctr = (sorted(goal_ctr.items(),key=lambda x:x[1], reverse=True)) # sorts the dictionary in reverse order of value "key:value".
  
 
-    print("")
-    print(("The {} GOAL Meets: {} NIST 800-160 OBJECTIVES.").format(goal_ctr[0][0],goal_ctr[0][1]))
-    print("These are:")
-    print("")
+    # Desplaying the results from the algrathium. 
 
-    if goal_ctr[0][0] == "Anticipate":
-        for i in anticipate_list:
-            print(("         * {}").format(i))
-    
-    if goal_ctr[0][0] == "Adapt":
-        for i in adapt_list:
-            print(("         * {}").format(i))
-    
-    if goal_ctr[0][0] == "Recover":
-        for i in recover_list:
-            print(("         * {}").format(i))
-    
-    if goal_ctr[0][0] == "Withstand":
-        for i in withstand_list:
-            print(("         * {}").format(i))
+    for key in range(0,4): # The number of goals is 4.
+        print("")
 
-    print("")
+        # goal_ctr[key][0] is the goal name and goal_ctr[key][1] is the number of objectives 
+        print(key)
+        print(("The {} GOAL Meets: {} NIST 800-160 OBJECTIVES.").format(goal_ctr[key][0],goal_ctr[key][1])) 
+        print("These are:")
+        print("")
 
-    print(("The {} GOAL Meets: {} NIST 800-160 OBJECTIVES.").format(goal_ctr[1][0],goal_ctr[1][1]))
-    print("These are:")
-    print("")
-
-    if goal_ctr[1][0] == "Anticipate":
-        for i in anticipate_list:
-            print(("         * {}").format(i))
+        if goal_ctr[key][0] == "Anticipate":
+            for i in anticipate_list:
+                print(("         * {}").format(i)) # Prints all the objectives met for anticipate.
     
-    if goal_ctr[1][0] == "Adapt":
-        for i in adapt_list:
-            print(("         * {}").format(i))
+        if goal_ctr[key][0] == "Adapt":
+            for i in adapt_list:
+                print(("         * {}").format(i)) # Prints all the objectives met for adapt.
     
-    if goal_ctr[1][0] == "Recover":
-        for i in recover_list:
-            print(("         * {}").format(i))
+        if goal_ctr[key][0] == "Recover":
+            for i in recover_list:
+                print(("         * {}").format(i)) # Prints all the objectives met for recover.
     
-    if goal_ctr[1][0] == "Withstand":
-        for i in withstand_list:
-            print(("         * {}").format(i))
+        if goal_ctr[key][0] == "Withstand":
+            for i in withstand_list:
+                print(("         * {}").format(i)) # Prints all the objectives met for withstand.
 
-    print("")
-
-    print(("The {} GOAL Meets: {} NIST 800-160 OBJECTIVES.").format(goal_ctr[2][0],goal_ctr[2][1]))
-    print("These are:")
-    print("")
-
-    if goal_ctr[2][0] == "Anticipate":
-        for i in anticipate_list:
-            print(("         * {}").format(i))
-    
-    if goal_ctr[2][0] == "Adapt":
-        for i in adapt_list:
-            print(("         * {}").format(i))
-    
-    if goal_ctr[2][0] == "Recover":
-        for i in recover_list:
-            print(("         * {}").format(i))
-    
-    if goal_ctr[2][0] == "Withstand":
-        for i in withstand_list:
-            print(("         * {}").format(i))
-
-    print("")
-
-
-    print(("The {} GOAL Meets: {} NIST 800-160 OBJECTIVES.").format(goal_ctr[3][0],goal_ctr[3][1]))
-    print("These are:")
-    print("")
-
-    if goal_ctr[3][0] == "Anticipate":
-        for i in anticipate_list:
-            print(("         * {}").format(i))
-    
-    if goal_ctr[3][0] == "Adapt":
-        for i in adapt_list:
-            print(("         * {}").format(i))
-    
-    if goal_ctr[3][0] == "Recover":
-        for i in recover_list:
-            print(("         * {}").format(i))
-    
-    if goal_ctr[3][0] == "Withstand":
-        for i in withstand_list:
-            print(("         * {}").format(i))
-
-    print("")
 
 
 def show_selected_objectives():
     
+    # To show the user the objectives they have selected.
+    # Set all the objectives to space
+
     ob_prevent = " "
     ob_prepare = " "
     ob_continue = " "
@@ -300,6 +272,8 @@ def show_selected_objectives():
     ob_understand = " " 
     ob_transform = " "
     ob_rearchitect = " "
+
+    # If the objective has been selected set it as x.
 
     for key, value in objectives_list.items():
         if key == "Prevent/Avoid" and value == True:
@@ -326,6 +300,7 @@ def show_selected_objectives():
         if key == "Re-architect" and value == True:
             ob_rearchitect = "x" 
 
+    # Printing the objectives with an x if it has been selected to show the user their inputs.
     print("")
     print("You have selected the following NIST SP 800-160 Objectives.")
     print (("Prevent/Avoid [{}] - Prepare [{}] - Continue [{}] - Constrain [{}] - Reconstitute [{}] - Understand [{}] - Transform [{}] - Re-architect [{}]").format(ob_prevent,ob_prepare,ob_continue,ob_constrain,ob_reconsitute,ob_understand,ob_transform,ob_rearchitect))
@@ -333,63 +308,65 @@ def show_selected_objectives():
    
 
 def set_objectives():
-    
+
     print("")
     print("---------- Console application ----------")
     print("")
     print("Choose NIST 800-160 objectives:")
     print("")
     
-    ob_prevent = input("Prevent/Avoid? y for yes, n for no.")
+    # Getting the users inputs of objectives.
+
+    ob_prevent = input("Prevent/Avoid? y for yes, n for no: ")
     if ob_prevent == "y":
         objectives_list.update({"Prevent/Avoid": True})
     else:
-        objectives_list.update({"Prevent/Avoid": False})
+        objectives_list.update({"Prevent/Avoid": False}) # Any incorect input counts as n
 
-    ob_prepare = input("Prepare? y for yes, n for no.")
+    ob_prepare = input("Prepare? y for yes, n for no: ")
     if ob_prepare == "y":
         objectives_list.update({"Prepare": True})
     else:
         objectives_list.update({"Prepare": False})
     
-    ob_continue = input("Continue? y for yes, n for no.")
+    ob_continue = input("Continue? y for yes, n for no: ")
     if ob_continue == "y":
         objectives_list.update({"Continue": True})
     else:
         objectives_list.update({"Continue": False})
     
-    ob_constrain = input("Constrain? y for yes, n for no.")
+    ob_constrain = input("Constrain? y for yes, n for no: ")
     if ob_constrain == "y":
         objectives_list.update({"Constrain": True})
     else: 
         objectives_list.update({"Constrain": False})
     
-    ob_reconsitute = input("Reconsitute? y for yes, n for no.")
+    ob_reconsitute = input("Reconsitute? y for yes, n for no: ")
     if ob_reconsitute == "y":
         objectives_list.update({"Reconstitute": True})
     else:
         objectives_list.update({"Reconstitute": False})
     
-    ob_understand = input("Understand? y for yes, n for no.")
+    ob_understand = input("Understand? y for yes, n for no: ")
     if ob_understand == "y":
         objectives_list.update({"Understand": True})
     else:
         objectives_list.update({"Understand": False})
     
-    ob_transform = input("Transform? y for yes, n for no.")
+    ob_transform = input("Transform? y for yes, n for no: ")
     if ob_transform == "y":
         objectives_list.update({"Transform": True})
     else: 
         objectives_list.update({"Transform": False})
 
-    ob_rearchitect = input("Re-architect? y for yes, n of no.")
+    ob_rearchitect = input("Re-architect? y for yes, n of no: ")
     if ob_rearchitect == "y":
         objectives_list.update({"Re-architect":True})
     else:
         objectives_list.update({"Re-architect":False})
 
 
-def show(construct):
+def show(construct): # work in progress
 
     if construct == "objectives":
         print("Objectives:")
@@ -419,69 +396,21 @@ def show(construct):
             print(i.name)
         print("")
 
-# Redundant function.
 
-def console_read():
-    os.system("cls")
-    read = input("> ")
-    
-    while len(read) == 0:
-        pass
-    if read != 0:
-        read = read.split(" ")
+if __name__ == "__main__":
+    get_stat_design_principles()
 
-        if read[0] == "show": 
+    get_struct_design_principles()
 
-            
-            if read[1] == "objectives":
-                show(read[1])
-                console_read()
+    get_goals_data()
 
-            if read[1] == "goals":
-                show(read[1])
-                console_read()
-
-            if read[1] == "strategic" and read[2] == "design" and read[3] == "principles":
-                read = read[1] + " " + read[2] + " " + read[3]
-                
-                show(read)
-                console_read()
-
-            if read[1] == "structural" and read[2] == "design" and read[3] == "principles":
-                read = read[1] + " " + read[2] + " " + read[3]
-                print(read)
-                show(read)
-                console_read()
-
-        else:
-            print("Incorrect command.")
-            input()
-            os.system("cls")
-            console_read()
-
-get_stat_design_principles()
-
-get_struct_design_principles()
-
-get_goals_data()
-
-get_objectives_data()
+    get_objectives_data()
         
-#os.system("clear")
+    set_objectives()
 
-#get_goals_data()
+    show_selected_objectives()
 
-set_objectives()
-
-#os.system("clear")
-
-show_selected_objectives()
-
-#input("Press ENTER to run analysis...")
-
-#os.system("clear")
-
-compare()
+    compare()
 
 
 
