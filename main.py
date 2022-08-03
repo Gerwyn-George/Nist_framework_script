@@ -453,13 +453,13 @@ if __name__ == "__main__":
             set_objectives()
             show_selected_objectives()
             compare()
-        if choose == "2":
+        elif choose == "2":
             show("objectives")
-        if choose == "3":
+        elif choose == "3":
             show("goals")
-        if choose == "4":
+        elif choose == "4":
             show("strategic design principles")
-        if choose == "5":
+        elif choose == "5":
             show("structural design principles")
         else:
             print(choose,"was not a vailid input")
