@@ -54,7 +54,7 @@
           "Transform": true,
           "Re-architect": true
         },
-        "description": "Modify mission or business functions and/or supporting capabilities in response to predicted changes in the technical, operational, or threat environments."
+        "description": "Modify mission or business functions and/or supporting capabilities in response to predicted changes in \nthe technical, operational, or threat environments."
       }
     ],
     "NIST 800-160 Stategic design principles": [
@@ -65,7 +65,7 @@
           "Withstand",
           "Recover"
         ],
-        "key_ideas": "Motivation: Limited organizational and programmatic resources need to be applied where they can provide the greatest benefit. This results in a strategy of focusing first on assets that are both critical and common followed by those that are either critical or common. Guidance: Know which mission or business functions, tasks, capabilities, and assets are critical. Know which resources, assets, or services are essential to the successful performance of critical functions and tasks or to the protection of critical assets. Focus first on ensuring the security and cyber resiliency of those essential resources that are common across multiple functions as high-value adversary targets."
+        "key_ideas": "Motivation: Limited organizational and programmatic resources need to be applied where they can provide the greatest benefit. This results in a strategy of focusing first on assets that are both critical and common \nfollowed by those that are either critical or common. Guidance: Know which mission or business functions, tasks, capabilities, and assets are critical. Know which \nresources, assets, or services are essential to the successful performance of critical functions and tasks or to the protection of critical assets. Focus first on ensuring the security and cyber resiliency of those essential resources that are common across multiple functions as high-value adversary targets."
       },
       {
         "name": "Support agility and architect for adapability",

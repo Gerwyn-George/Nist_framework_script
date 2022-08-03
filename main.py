@@ -1,8 +1,6 @@
 # The libraries are specified here. The json library is used to access json data used in this script.  
 
 import json
-import os
-from unicodedata import name
 
 # This script, at its most basic performs the following actions. 
 # 1. Open the Data.json file. 
@@ -322,9 +320,8 @@ def show_selected_objectives():
     # Printing the objectives with an x if it has been selected to show the user their inputs.
 
     print("")
-    print("You have selected the following NIST SP 800-160 Objectives.")
+    print("You have selected the following NIST SP 800-160 Objectives:")
     print (("Prevent/Avoid [{}] - Prepare [{}] - Continue [{}] - Constrain [{}] - Reconstitute [{}] - Understand [{}] - Transform [{}] - Re-architect [{}]").format(ob_prevent,ob_prepare,ob_continue,ob_constrain,ob_reconsitute,ob_understand,ob_transform,ob_rearchitect))
-    print("")
    
 
 def set_objectives():
@@ -387,10 +384,11 @@ def set_objectives():
 def show(construct): 
 
     if construct == "objectives":
-        print("Objectives:")
         print("")
+        print("Objectives:")
 
         for i in list_objectives: # Loops through the list of objectives from the json file.
+            # Displays the name and description.
             print("")
             print(("* {}").format(i.name))
             print("")
@@ -399,10 +397,11 @@ def show(construct):
         print("")
     
     if construct == "goals":
-        print("Goals:")
         print("")
+        print("Goals:")
 
         for i in list_goals: # Loops through the list of goals from the json file.
+            # Displays the name and description.
             print("")
             print(("* {}").format(i.name))
             print("")
@@ -411,10 +410,11 @@ def show(construct):
         print("")
 
     if construct == "strategic design principles":
-        print("Stategic design principles:")
         print("")
+        print("Stategic design principles:")
 
         for i in list_strat_principles: # Loops through the list of strat principles from the json file.
+            # Displays the name and key points.
             print("")
             print(("* {}").format(i.name))
             print("")
@@ -423,10 +423,11 @@ def show(construct):
         print("")
 
     if construct == "structural design principles":
-        print("Structural design principles")
         print("")
+        print("Structural design principles")
 
         for i in list_struct_principles: # Loops through the list of struct principles  from the json file.
+            # Displays the name and key points.
             print("")
             print(("* {}").format(i.name))
             print("")
@@ -437,7 +438,7 @@ def show(construct):
 
 if __name__ == "__main__":
 
-    # Set up functions.
+    # Get functions.
 
     get_stat_design_principles()
 
@@ -492,6 +493,7 @@ if __name__ == "__main__":
         
         # Allows you to break from the loop.
 
+        print("")
         repeat = input("Do you want to select another option? y for yes, n for no: ")
-        if repeat != "y":
+        if repeat != "y": # Any incorect input counts as n.
             break
