@@ -247,9 +247,7 @@ def compare():
     goal_ctr = {"Anticipate":len(anticipate_list), "Adapt":len(adapt_list), "Recover":len(recover_list), "Withstand":len(withstand_list)} 
 
     goal_ctr = (sorted(goal_ctr.items(),key=lambda x:x[1], reverse=True)) # Sorts the dictionary in reverse order of value "key:value".
- 
-
-def show_compare():
+    
 
     # Desplaying the results from the algrathium. 
 
@@ -476,8 +474,6 @@ if __name__ == "__main__":
             show_selected_objectives()
 
             compare()
-
-            show_compare()
 
         elif choose == "2":
             show("objectives")
