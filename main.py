@@ -384,9 +384,9 @@ def show(construct):
         print("")
         for i in list_objectives: # Loops through the list of objectives from the json file.
             print("")
-            print("*",i.name)
+            print(("* {}").format(i.name))
             print("")
-            print("description:",i.description)
+            print(("description: {}").format(i.description))
         print("")
     
     if construct == "goals":
@@ -394,9 +394,9 @@ def show(construct):
         print("")
         for i in list_goals: # Loops through the list of goals from the json file.
             print("")
-            print("*",i.name)
+            print(("* {}").format(i.name))
             print("")
-            print("description:",i.description)
+            print(("description: {}").format(i.description))
         print("")
 
     if construct == "strategic design principles":
@@ -404,9 +404,9 @@ def show(construct):
         print("")
         for i in list_strat_principles: # Loops through the list of strat principles from the json file.
             print("")
-            print("*",i.name)
+            print(("* {}").format(i.name))
             print("")
-            print("key ideas:",i.key_ideas)
+            print(("key ideas:").format(i.key_ideas))
         print("")
 
     if construct == "structural design principles":
@@ -414,9 +414,9 @@ def show(construct):
         print("")
         for i in list_struct_principles: # Loops through the list of struct principles  from the json file.
             print("")
-            print("*",i.name)
+            print(("* {}").format(i.name))
             print("")
-            print("key ideas:",i.key_ideas)
+            print(("key ideas:").format(i.key_ideas))
         print("")
 
 
@@ -463,7 +463,7 @@ if __name__ == "__main__":
         elif choose == "5":
             show("structural design principles")
         else:
-            print(choose,"was not a vailid input")
+            print(("{} was not a vailid input").format(choose))
         
         # Allows you to break from the loop.
 
