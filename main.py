@@ -418,7 +418,7 @@ def show(construct):
             print("")
             print(("* {}").format(i.name))
             print("")
-            print(("key ideas:").format(i.key_ideas))
+            print(("key ideas: {}").format(i.key_ideas))
 
         print("")
 
@@ -430,7 +430,7 @@ def show(construct):
             print("")
             print(("* {}").format(i.name))
             print("")
-            print(("key ideas:").format(i.key_ideas))
+            print(("key ideas: {}").format(i.key_ideas))
 
         print("")
 
