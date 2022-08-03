@@ -243,7 +243,7 @@ def compare():
 
     # Desplaying the results from the algrathium. 
 
-    for key in range(0,4): # The number of goals is 4.
+    for key in range(len(goal_ctr)): # The number of goals is 4.
             
         print("")
 
@@ -287,6 +287,7 @@ def show_selected_objectives():
     # If the objective has been selected set it as x.
 
     for key, value in objectives_list.items():
+
         if key == "Prevent/Avoid" and value == True:
             ob_prevent = "x"
 
