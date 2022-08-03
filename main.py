@@ -19,10 +19,15 @@ with open('Data.json', 'r') as f:
 # The empty lists for the NIST SP 800 - 160 constructs are created here.  
 
 list_goals = []
+
 list_objectives = []
+
 list_strat_principles = []
+
 list_struct_principles = []
+
 list_techniques = []
+
 list_approaches = []
 
 # The class objects are defined here for each construct. defaults have been put in for each attribute of the class. 
@@ -120,6 +125,7 @@ def get_objectives_data():
 
             if len(y.discussion) == 0:
                 y.discussion = obj["Discussion"] # If the discussion is empty, assign the value of discussion. 
+
 
 def get_stat_design_principles():
 
@@ -241,6 +247,8 @@ def compare():
     goal_ctr = (sorted(goal_ctr.items(),key=lambda x:x[1], reverse=True)) # sorts the dictionary in reverse order of value "key:value".
  
 
+def show_compare():
+
     # Desplaying the results from the algrathium. 
 
     for key in range(len(goal_ctr)): # The number of goals is 4.
@@ -267,7 +275,6 @@ def compare():
         if goal_ctr[key][0] == "Withstand":
             for i in withstand_list:
                 print(("         * {}").format(i)) # Prints all the objectives met for withstand.
-
 
 
 def show_selected_objectives():
@@ -382,41 +389,49 @@ def show(construct):
     if construct == "objectives":
         print("Objectives:")
         print("")
+
         for i in list_objectives: # Loops through the list of objectives from the json file.
             print("")
             print(("* {}").format(i.name))
             print("")
             print(("description: {}").format(i.description))
+
         print("")
     
     if construct == "goals":
         print("Goals:")
         print("")
+
         for i in list_goals: # Loops through the list of goals from the json file.
             print("")
             print(("* {}").format(i.name))
             print("")
             print(("description: {}").format(i.description))
+
         print("")
 
     if construct == "strategic design principles":
         print("Stategic design principles:")
         print("")
+
         for i in list_strat_principles: # Loops through the list of strat principles from the json file.
             print("")
             print(("* {}").format(i.name))
             print("")
             print(("key ideas:").format(i.key_ideas))
+
         print("")
 
     if construct == "structural design principles":
         print("Structural design principles")
         print("")
+
         for i in list_struct_principles: # Loops through the list of struct principles  from the json file.
             print("")
             print(("* {}").format(i.name))
             print("")
             print(("key ideas:").format(i.key_ideas))
+
         print("")
 
 
@@ -425,8 +440,11 @@ if __name__ == "__main__":
     # Set up functions.
 
     get_stat_design_principles()
+
     get_struct_design_principles()
+
     get_goals_data()
+
     get_objectives_data()
 
     # Menue
@@ -452,16 +470,25 @@ if __name__ == "__main__":
 
         if choose == "1":        
             set_objectives()
+
             show_selected_objectives()
+
             compare()
+
+            show_compare()
+
         elif choose == "2":
             show("objectives")
+
         elif choose == "3":
             show("goals")
+
         elif choose == "4":
             show("strategic design principles")
+
         elif choose == "5":
             show("structural design principles")
+
         else:
             print(("{} was not a vailid input").format(choose))
         
