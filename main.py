@@ -171,7 +171,7 @@ def get_struct_design_principles():
 
 def compare():
 
-    # Set all goals to False as defult
+    # Set all goals to False as defult.
     Anticipate = {"Prevent/Avoid":False, "Prepare":False, "Continue":False, "Constrain":False, "Reconstitute":False, "Understand":False, "Transform":False, "Re-architect":False}
     Withstand = {"Prevent/Avoid":False, "Prepare":False, "Continue":False, "Constrain":False, "Reconstitute":False, "Understand":False, "Transform":False, "Re-architect":False}
     Recover = {"Prevent/Avoid":False, "Prepare":False, "Continue":False, "Constrain":False, "Reconstitute":False, "Understand":False, "Transform":False, "Re-architect":False}
@@ -242,9 +242,11 @@ def compare():
     
             withstand_list.append(key) # Makes a copy of the withstand dictionary as a list.
 
-    goal_ctr = {"Anticipate":len(anticipate_list), "Adapt":len(adapt_list), "Recover":len(recover_list), "Withstand":len(withstand_list)} # Makes a dictionary of the lengths of each goal list
+    # Makes a dictionary of the lengths of each goal list.
 
-    goal_ctr = (sorted(goal_ctr.items(),key=lambda x:x[1], reverse=True)) # sorts the dictionary in reverse order of value "key:value".
+    goal_ctr = {"Anticipate":len(anticipate_list), "Adapt":len(adapt_list), "Recover":len(recover_list), "Withstand":len(withstand_list)} 
+
+    goal_ctr = (sorted(goal_ctr.items(),key=lambda x:x[1], reverse=True)) # Sorts the dictionary in reverse order of value "key:value".
  
 
 def show_compare():
@@ -255,7 +257,7 @@ def show_compare():
             
         print("")
 
-        # goal_ctr[key][0] is the goal name and goal_ctr[key][1] is the number of objectives 
+        # goal_ctr[key][0] is the goal name and goal_ctr[key][1] is the number of objectives.
         print(("The {} GOAL Meets: {} NIST 800-160 OBJECTIVES.").format(goal_ctr[key][0],goal_ctr[key][1])) 
         print("These are:")
         print("")
@@ -280,7 +282,7 @@ def show_compare():
 def show_selected_objectives():
     
     # To show the user the objectives they have selected.
-    # Set all the objectives to space
+    # Set all the objectives to space.
 
     ob_prevent = " "
     ob_prepare = " "
@@ -339,7 +341,7 @@ def set_objectives():
     if ob_prevent == "y":
         objectives_list.update({"Prevent/Avoid": True})
     else:
-        objectives_list.update({"Prevent/Avoid": False}) # Any incorect input counts as n
+        objectives_list.update({"Prevent/Avoid": False}) # Any incorect input counts as n.
 
     ob_prepare = input("Prepare? y for yes, n for no: ")
     if ob_prepare == "y":
